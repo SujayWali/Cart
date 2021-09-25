@@ -15,7 +15,33 @@ class CartItem extends React.Component {
     }
 
     increaseQuantity = () => {
-        console.log("this.state" , this.state);
+        // this.state.qty += 1;
+        // console.log("this.state" , this.state);
+        //-----------------setState form 1------------------
+        // this.setState ({
+        //     qty: this.state.qty + 1
+        // });
+        //-----------------setState form 2------------------
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty + 1
+            }
+        });
+    }
+
+    decreaseQuantity = () => {
+        // this.state.qty += 1;
+        // console.log("this.state" , this.state);
+        //-----------------setState form 1------------------
+        // this.setState ({
+        //     qty: this.state.qty + 1
+        // });
+        //-----------------setState form 2------------------
+        this.setState((prevState) => {
+            return{
+                qty: prevState.qty - 1
+            }
+        });
     }
 render(){
     const {price, title, qty, img} = this.state; // using Object distructuring
@@ -39,6 +65,7 @@ render(){
                     <img alt="decrease" 
                     className="action-icons" 
                     src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png"
+                    onClick = {this.decreaseQuantity}
                     />
                     <img alt="delete" 
                     className="action-icons" 
