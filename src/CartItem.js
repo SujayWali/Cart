@@ -12,7 +12,25 @@ class CartItem extends React.Component {
         }
 
         // this.increaseQuantity = this.increaseQuantity.bind(this);
+        // this.testing();
     }
+
+    // testing() {
+    //     const promise = new promise ((resolve, reject) => {
+    //       setTimeout(() => {
+    //          resolve('done');
+
+    //       }, 5000); 
+    //     })
+
+    //     promise.then(() => {
+    //         //setState acts like a synchronous call 
+    //         this.setState({qty: 100});
+
+    //         console.log('state', this.state);
+    //     });
+
+    // }
 
     increaseQuantity = () => {
         // this.state.qty += 1;
@@ -26,7 +44,11 @@ class CartItem extends React.Component {
             return{
                 qty: prevState.qty + 1
             }
+        },() => {
+            console.log("this.state",this.state);
         });
+
+        // console.log("this.state" ,this.state); ----because our setState call is asynchronous 
     }
 
     decreaseQuantity = () => {
@@ -37,13 +59,24 @@ class CartItem extends React.Component {
         //     qty: this.state.qty + 1
         // });
         //-----------------setState form 2------------------
+        const { qty } = this.state // using Object distructuring
+        if (qty === 0){
+            return;
+        }
         this.setState((prevState) => {
             return{
                 qty: prevState.qty - 1
             }
+        },() => {
+                console.log("this.state",this.state)
         });
     }
+
+   
+    
 render(){
+
+
     const {price, title, qty, img} = this.state; // using Object distructuring
     return(
         <div className="cart-item">
