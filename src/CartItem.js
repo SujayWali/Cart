@@ -2,18 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 
 class CartItem extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            title : 'Mobile Phone',
-            price : 999,
-            qty : 1,
-            img : ''
-        }
-
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        // this.testing();
-    }
+ 
 
     // testing() {
     //     const promise = new promise ((resolve, reject) => {
@@ -76,10 +65,11 @@ class CartItem extends React.Component {
     
 render(){
 
-
-    const {price, title, qty, img} = this.state; // using Object distructuring
+    console.log('this.props', this.props);
+    const {price, title, qty, img} = this.props.product; // using Object distructuring
     return(
         <div className="cart-item">
+            
             <div className="left-block">
                  <img style={styles.image}/>
             </div>
